@@ -2,6 +2,11 @@
 
 Mobile robot with Intel Galileo
 
+## 15th Feb, 2015
+
+An update on what causes the sensor problem. That is the motor shield, when the shield is disattached 
+Serial monitor reads same range of values.
+
 ## 14th Feb, 2015
 
 Test suites have been developed, including sensors, motors. An attempt to implement
