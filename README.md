@@ -2,6 +2,10 @@
 
 Mobile robot with Intel Galileo
 
+## 8th Mar, 2015
+
+Intel Galileo has its own voltage regulator. So any voltage from 7 to 12 can be used to feed it.
+
 ## 15th Feb, 2015
 
 An update on what causes the sensor problem. That is the motor shield, when the shield is disattached 

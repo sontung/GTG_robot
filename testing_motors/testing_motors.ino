@@ -10,10 +10,11 @@ void setup() {
 }
 
 void loop() {
-  turn_left();
-  delay(3000);
-  turn_right();
-  delay(3000);
+  go_ahead();
+//  turn_left();
+//  delay(3000);
+//  turn_right();
+//  delay(3000);
 }
 
 void motorA() {
