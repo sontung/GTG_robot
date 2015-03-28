@@ -1,14 +1,18 @@
-int analogPin_sensor1 = 0;
-int sensor1 = 0;
-int analogPin_sensor2 = 1;
-int sensor2 = 0;
-int analogPin_sensor3 = 2;
-int sensor3 = 0;
-int analogPin_sensor4 = 3;
-int sensor4 = 0;
-int analogPin_sensor5 = 5;
-int sensor5 = 0;
-  
+/*
+feedback:
+more power motor
+lower the dangerous level
+*/
+#include <SharpIR.h>
+
+SharpIR sharp1(2, 25, 93, 1080);  // sensor attached to pin 2
+SharpIR sharp2(3, 25, 93, 1080);  // sensor attached to pin 3
+SharpIR sharp3(5, 25, 93, 1080);  // sensor attached to pin 5
+int val_sensor_ahead = 0;
+int val_sensor_right = 0;
+int val_sensor_left = 0;
+int dangerous_level = 60;
+
 void setup() {
   // setup motor channels
   pinMode(12, OUTPUT);
@@ -22,91 +26,92 @@ void setup() {
 
 void loop() {
   // read sensors distance
-  sensor1 = analogRead(analogPin_sensor1);
-  sensor2 = analogRead(analogPin_sensor2);
-  sensor3 = analogRead(analogPin_sensor3);
-  sensor4 = analogRead(analogPin_sensor4);
-  sensor5 = analogRead(analogPin_sensor5);
+  val_sensor_ahead = sharp3.distance();
+  val_sensor_right = sharp2.distance();
+  val_sensor_left = sharp1.distance();
   
-  Serial.println(sensor1);
-  
-  if (sensor1 >= 30)
+  if (val_sensor_ahead < dangerous_level)
   {
-    if (sensor4 <= 150)
+    if (val_sensor_right > dangerous_level)
     {
+      Serial.println("turn right");
       turn_right();
     }
-    else if (sensor5 <= 150)
+    else if (val_sensor_left > dangerous_level)
     {
+      Serial.println("turn left");
       turn_left();
     }
     else
     {
+      Serial.println("stop");
       brake();
     }
   }
   else
   {
+    Serial.println("go ahead");
     go_ahead();
   }
 }
 
 void go_ahead() {
-  /* Drive two motors in forward direction, that means the
-  robot's moving forward */
-  
   // Motor channel A
   digitalWrite(12, HIGH); // forward direction
   digitalWrite(9, LOW);  // disengage brake
-  analogWrite(3, 100);  // speed
+  analogWrite(3, 200);  // speed
   
   // Motor channel B
   digitalWrite(13, HIGH);  // forward direction
   digitalWrite(8, LOW);  // disengage brake
-  analogWrite(11, 100); // speed
+  analogWrite(11, 200); // speed
 }
 
 void turn_left() {
-  /* Drive the robot to the the left just one quarter of the
-  circle */
-  
   // Motor channel A
   digitalWrite(12, LOW); // backward direction
   digitalWrite(9, LOW);  // disengage brake
-  analogWrite(3, 100);  // speed
+  analogWrite(3, 200);  // speed
   
   // Motor channel B
   digitalWrite(13, HIGH);  // forward direction
   digitalWrite(8, LOW);  // disengage brake
-  analogWrite(11, 100); // speed
+  analogWrite(11, 200); // speed
   
-  delay(100);
+  delay(200);
   brake();
-  delay(100);
 }
 
 void turn_right() {
-  /* Drive the robot to the the right just one quarter of the
-  circle */
-  
   // Motor channel A
   digitalWrite(12, HIGH); // forward direction
   digitalWrite(9, LOW);  // disengage brake
-  analogWrite(3, 100);  // speed
+  analogWrite(3, 200);  // speed
   
   // Motor channel B
   digitalWrite(13, LOW);  // backward direction
   digitalWrite(8, LOW);  // disengage brake
-  analogWrite(11, 100); // speed
+  analogWrite(11, 200); // speed
   
-  delay(100);
+  delay(200);
   brake();
-  delay(100);
 }
 
+//void turn_back(char dir) {
+//  /* Turn the robot 180 degree */
+//  if (dir == "left")
+//  {
+//    turn_left();
+//    turn_left();
+//  }
+//  else if (dir == "right")
+//  {
+//    turn_right();
+//    turn_right();
+//  }
+//}
+
 void brake() {
-  /* Stop both motors */
-  
   digitalWrite(9, HIGH);  // engage brake of channel A
   digitalWrite(8, HIGH);  // engage brake of channel B
 }

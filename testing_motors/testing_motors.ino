@@ -10,19 +10,9 @@ void setup() {
 }
 
 void loop() {
-  go_ahead();
-//  turn_left();
-//  delay(3000);
-//  turn_right();
-//  delay(3000);
-}
-
-void motorA() {
-  digitalWrite(12, HIGH); // forward direction
-  digitalWrite(9, LOW);  // disengage brake
-  analogWrite(3, 200);  // speed
-  delay(100);
-  digitalWrite(9, HIGH);  // engage brake
+  turn_left();
+  delay(3000);
+  turn_right();
   delay(3000);
 }
 
@@ -42,32 +32,30 @@ void turn_left() {
   // Motor channel A
   digitalWrite(12, LOW); // backward direction
   digitalWrite(9, LOW);  // disengage brake
-  analogWrite(3, 100);  // speed
+  analogWrite(3, 200);  // speed
   
   // Motor channel B
   digitalWrite(13, HIGH);  // forward direction
   digitalWrite(8, LOW);  // disengage brake
-  analogWrite(11, 100); // speed
+  analogWrite(11, 200); // speed
   
-  delay(100);
+  delay(200);
   brake();
-  delay(100);
 }
 
 void turn_right() {
   // Motor channel A
   digitalWrite(12, HIGH); // forward direction
   digitalWrite(9, LOW);  // disengage brake
-  analogWrite(3, 100);  // speed
+  analogWrite(3, 200);  // speed
   
   // Motor channel B
   digitalWrite(13, LOW);  // backward direction
   digitalWrite(8, LOW);  // disengage brake
-  analogWrite(11, 100); // speed
+  analogWrite(11, 200); // speed
   
-  delay(100);
+  delay(200);
   brake();
-  delay(100);
 }
 
 void brake() {

@@ -2,6 +2,10 @@
 
 Mobile robot with Intel Galileo
 
+## 28th Mar, 2015
+
+First complete attempt on avoid obstacles implementation. Test with the bot, everything works fine. Need higher dangerous level though.
+
 ## 8th Mar, 2015
 
 Intel Galileo has its own voltage regulator. So any voltage from 7 to 12 can be used to feed it.
