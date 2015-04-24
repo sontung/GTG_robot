@@ -2,7 +2,7 @@
 
 Mobile robot with Intel Galileo
 
-![Screenshot]()
+![Screenshot](https://raw.githubusercontent.com/sontung/GTG_robot/master/screenshot.jpg)
 
 Video demo goes [here](https://www.youtube.com/watch?v=QtUvm0GB00A)
 
