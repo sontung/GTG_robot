@@ -11,7 +11,7 @@ SharpIR sharp3(5, 25, 93, 1080);  // sensor attached to pin 5
 int val_sensor_ahead = 0;
 int val_sensor_right = 0;
 int val_sensor_left = 0;
-int dangerous_level = 60;
+int dangerous_level = 70;
 
 void setup() {
   // setup motor channels
@@ -96,20 +96,6 @@ void turn_right() {
   delay(200);
   brake();
 }
-
-//void turn_back(char dir) {
-//  /* Turn the robot 180 degree */
-//  if (dir == "left")
-//  {
-//    turn_left();
-//    turn_left();
-//  }
-//  else if (dir == "right")
-//  {
-//    turn_right();
-//    turn_right();
-//  }
-//}
 
 void brake() {
   digitalWrite(9, HIGH);  // engage brake of channel A

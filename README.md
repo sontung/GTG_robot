@@ -2,6 +2,14 @@
 
 Mobile robot with Intel Galileo
 
+![Screenshot]()
+
+Video demo goes [here](https://www.youtube.com/watch?v=QtUvm0GB00A)
+
+## 24th Apr, 2015
+
+Finalize project.
+
 ## 28th Mar, 2015
 
 First complete attempt on avoid obstacles implementation. Test with the bot, everything works fine. Need higher dangerous level though.

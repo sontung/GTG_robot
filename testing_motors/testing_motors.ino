@@ -10,9 +10,9 @@ void setup() {
 }
 
 void loop() {
-  turn_left();
+  turn_back("left");
   delay(3000);
-  turn_right();
+  turn_back("right");
   delay(3000);
 }
 
@@ -56,6 +56,22 @@ void turn_right() {
   
   delay(200);
   brake();
+}
+
+void turn_back(String dir) {
+ /* Turn the robot 180 degree */
+ if (dir == "left")
+ {
+   Serial.println("left");
+   turn_left();
+   turn_left();
+ }
+ else if (dir == "right")
+ {
+   Serial.println("right");
+   turn_right();
+   turn_right();
+ }
 }
 
 void brake() {
